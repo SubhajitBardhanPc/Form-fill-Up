@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
     const noticeList = document.getElementById("notice-list");
 
-    // Sample notices (replace with API fetch)
+    // Sample notices with links (replace with API fetch)
     const notices = [
-        { date: "2025-03-01", text: "Event A update." },
-        { date: "2025-03-15", text: "Meeting reminder." },
-        { date: "2025-03-28", text: "Registration deadline." }
+        { date: "2025-03-01", text: "Event A update", link: "/notices/1" },
+        { date: "2025-03-15", text: "Meeting reminder", link: "/notices/2" },
+        { date: "2025-03-28", text: "Registration deadline", link: "/notices/3" }
     ];
 
     // Get current date and filter last 30 days notices
@@ -22,7 +22,16 @@ document.addEventListener("DOMContentLoaded", function () {
     if (filteredNotices.length > 0) {
         filteredNotices.forEach(notice => {
             const li = document.createElement("li");
-            li.textContent = `${notice.date}: ${notice.text}`;
+
+            // Create anchor tag
+            const a = document.createElement("a");
+            a.href = notice.link;
+            a.textContent = `${notice.date}: ${notice.text}`;
+            a.target = "_blank"; // Opens in new tab (optional)
+            a.style.textDecoration = "none";
+            a.style.color = "#007bff"; // Bootstrap blue color
+
+            li.appendChild(a);
             noticeList.appendChild(li);
         });
     } else {
