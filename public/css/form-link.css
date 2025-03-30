@@ -1,0 +1,20 @@
+.form-link-section {
+    margin: 20px;
+    text-align: center;
+}
+
+.form-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: gray;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.form-link:not(.disabled) {
+    background-color: blue;
+    pointer-events: auto;
+}
