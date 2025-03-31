@@ -1,0 +1,124 @@
+/* General Reset */
+/* Header Section */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw; /* Full viewport width */
+    height: 60px; /* Adjust height as needed */
+    background-color: #007bff;
+    color: #fff;
+    position: fixed; /* Sticks to the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures it stays above other elements */
+    padding: 0 20px; /* Keeps content aligned inside */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.header .menu-btn {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.header .logo {
+    height: 40px;
+}
+
+.header .nav-links {
+    display: flex;
+}
+
+.header .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+
+/* OTP Section */
+.otp-container {
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.otp-container h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.otp-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.otp-container label {
+    font-size: 14px;
+    font-weight: normal;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.otp-container input[type="text"],
+.otp-container input[type="number"],
+.otp-container button {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.otp-container button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+.otp-container button:hover {
+    background-color: #0056b3;
+}
+
+#otpInputSection {
+    display: none; /* Initially hidden */
+    margin-top: 15px;
+}
+
+/* Footer Section */
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+.footer-content nav {
+    margin: 10px 0;
+}
