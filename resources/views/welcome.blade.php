@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('css/drawer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     <!-- Side Drawer -->
@@ -33,9 +34,9 @@
         </nav>
     </header>
 
-    <!-- Login Section -->
+    <!-- Registration Section -->
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Register</h2>
         <form id="loginForm">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -43,11 +44,9 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
     
-            <button type="submit">Login</button>
+            <button type="submit">Register</button>
         </form>
     </div>
-
-   
 
     <!-- Footer Section -->
     <footer class="footer">
@@ -71,6 +70,24 @@
             const drawer = document.getElementById("sideDrawer");
             drawer.classList.toggle("open");
         }
+
+        document.getElementById("loginForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+    
+            const formData = new FormData(this);
+    
+            const response = await fetch("/register", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+                    "Accept": "application/json"
+                }
+            });
+    
+            const result = await response.json();
+            alert(result.message);
+        });
     </script>
 </body>
 </html>

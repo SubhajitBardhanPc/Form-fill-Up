@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Models\User;
 
 class FormController extends Controller
 {
-    //Form Controller
+    // Show the form
+    public function showForm()
+    {
+        return view('form'); // Ensure you have 'form.blade.php' in your 'resources/views/' directory
+    }
+
+    // Handle form submission and store user data
     public function store(Request $request)
     {
         $request->validate([
@@ -23,5 +28,4 @@ class FormController extends Controller
 
         return redirect()->back()->with('success', 'Data saved successfully!');
     }
-    
 }
