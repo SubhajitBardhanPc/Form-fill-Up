@@ -17,6 +17,14 @@ Route::get('/form', function () {
 // Route to handle dashboard functionality using DashBoardController
 Route::get('/dashboard', [DashBoardController::class, 'dashboard'])->name('dashboard');
 
+
+Route::get('/login',function(){
+    return view ('login');
+});
+Route::get('/register',function(){
+    return view('welcome');
+});
+
 Route::post('/register', function (Request $request) {
     $request->validate([
         'email' => 'required|email|unique:users,email',

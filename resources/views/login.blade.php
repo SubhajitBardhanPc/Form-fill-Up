@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Page</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- External CSS files -->
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
@@ -34,25 +36,22 @@
         </nav>
     </header>
 
-    <!-- Registration Section -->
+
     <div class="login-container">
-        <h2>Register</h2>
+        <h2>Login</h2>
         <form id="loginForm">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Enter your email" required>
-    
+
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" placeholder="Enter your password" required>
-    
-            <button type="submit">Register</button>
+
+            <button type="submit">Login</button>
         </form>
-         <!-- Login Hyperlink -->
-    <p>Already registered? <a href="/login">Login here</a></p>
+
+        <p>Don't have an account? <a href="/register">Register here</a></p>
     </div>
-    <!-- Registration Section -->
-
-
-
+    
     <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-content">
@@ -68,31 +67,9 @@
 
     <!-- External JavaScript -->
     <script src="{{ asset('js/slider.js') }}"></script>
-    <script src="{{ asset('js/form-link.js') }}"></script>
-    
-    <script>
-        function toggleDrawer() {
-            const drawer = document.getElementById("sideDrawer");
-            drawer.classList.toggle("open");
-        }
 
-        document.getElementById("loginForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-    
-            const formData = new FormData(this);
-    
-            const response = await fetch("/register", {
-                method: "POST",
-                body: formData,
-                headers: {
-                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-                    "Accept": "application/json"
-                }
-            });
-    
-            const result = await response.json();
-            alert(result.message);
-        });
-    </script>
+    <!-- External JavaScript -->
+    <script src="{{ asset('js/login.js') }}"></script>
+
 </body>
 </html>
