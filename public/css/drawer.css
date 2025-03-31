@@ -1,30 +1,45 @@
 .side-drawer {
-    position: fixed;
+    position: fixed; /* Keeps it on top */
     top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background-color: #444;
-    padding-top: 20px;
-    transition: left 0.3s ease-in-out;
+    left: -280px; /* Initially hidden */
+    width: 280px; /* Slightly wider for better readability */
+    height: 100vh;
+    background: rgba(51, 51, 51, 0.9); /* Glassmorphism background */
+    backdrop-filter: blur(10px); /* Adds blur effect */
+    color: white;
+    overflow-x: hidden;
+    transition: left 0.4s ease-in-out, box-shadow 0.3s ease-in-out;
+    z-index: 1000; /* Ensures it is above all other content */
+    padding-top: 60px;
+    border-radius: 0 10px 10px 0; /* Rounded right corners */
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.2); /* Soft shadow effect */
 }
 
 .side-drawer.open {
     left: 0;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.4); /* Enhances shadow when open */
 }
 
+/* Drawer Links */
 .side-drawer a {
     display: block;
     color: white;
     text-decoration: none;
-    padding: 10px 20px;
-    border-bottom: 1px solid #555;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease, padding-left 0.3s ease;
 }
 
+/* Hover Effect */
 .side-drawer a:hover {
-    background-color: #555;
+    background: linear-gradient(to right, #4a90e2, #52e5e7); /* Smooth gradient hover */
+    color: #fff;
+    padding-left: 25px; /* Smooth sliding effect */
+    border-radius: 5px;
 }
 
+/* Close Button */
 .close-btn {
     background: none;
     border: none;
@@ -34,4 +49,18 @@
     padding: 10px 20px;
     text-align: right;
     display: block;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Close Button Hover */
+.close-btn:hover {
+    color: #ff4d4d; /* Subtle red hover effect */
+    transform: rotate(90deg); /* Rotates on hover */
+}
+
+/* Responsive: Smaller Drawer on Mobile */
+@media (max-width: 500px) {
+    .side-drawer {
+        width: 220px; /* Slightly narrower */
+    }
 }

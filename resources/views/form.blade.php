@@ -24,7 +24,7 @@
     <!-- Header Section -->
     <header class="header">
         <button class="menu-btn" onclick="toggleDrawer()">&#9776;</button>
-        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+        <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="logo">
         <nav class="nav-links">
             <a href="#">Home</a>
             <a href="#">About</a>
