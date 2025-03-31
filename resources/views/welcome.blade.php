@@ -25,7 +25,7 @@
     <!-- Header Section -->
     <header class="header">
         <button class="menu-btn" onclick="toggleDrawer()">&#9776;</button>
-        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="logo">
+        
         <nav class="nav-links">
             <a href="#">Home</a>
             <a href="#">About</a>
@@ -33,17 +33,7 @@
         </nav>
     </header>
 
-{{-- Just add OTP validation code here --}}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OTP Verification</title>
-    <link rel="stylesheet" href="{{ asset('css/otp.css') }}">
-</head>
-<body>
-
+    <!-- Login Section -->
     <div class="login-container">
         <h2>Login</h2>
         <form id="loginForm">
@@ -56,17 +46,6 @@
             <button type="submit">Login</button>
         </form>
     </div>
-    
-
-    <script src="{{ asset('js/Lscripts.js') }}"></script>
-
-</body>
-</html>
-
-
-<!-- External JavaScript -->
-<script src="{{ asset('js/notice-board.js') }}"></script>
-
 
    
 
@@ -86,7 +65,7 @@
     <!-- External JavaScript -->
     <script src="{{ asset('js/slider.js') }}"></script>
     <script src="{{ asset('js/form-link.js') }}"></script>
-    <script src="{{ asset('js/otp.js') }}"></script>
+    
     <script>
         function toggleDrawer() {
             const drawer = document.getElementById("sideDrawer");
