@@ -6,6 +6,8 @@ use App\Http\Controllers\DashBoardController;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth; // ✅ Added for authentication
+
 // Route to display the form using the FormController
 Route::get('/', [FormController::class, 'showForm'])->name('form.show');
 
@@ -17,14 +19,17 @@ Route::get('/form', function () {
 // Route to handle dashboard functionality using DashBoardController
 Route::get('/dashboard', [DashBoardController::class, 'dashboard'])->name('dashboard');
 
+// ✅ Login Page Route
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
-Route::get('/login',function(){
-    return view ('login');
-});
-Route::get('/register',function(){
-    return view('welcome');
-});
+// ✅ Register Page Route
+Route::get('/register', function () {
+    return view('welcome'); // This should be your register view, update if needed
+})->name('register');
 
+// ✅ Register User Route (No Change)
 Route::post('/register', function (Request $request) {
     $request->validate([
         'email' => 'required|email|unique:users,email',
@@ -38,4 +43,18 @@ Route::post('/register', function (Request $request) {
     ]);
 
     return response()->json(['message' => 'User registered successfully']);
+});
+
+// ✅ Added POST Route for Login (Fix for your issue)
+Route::post('/login', function (Request $request) {
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
+
+    if (Auth::attempt($credentials)) {
+        return response()->json(['success' => true, 'message' => 'Login successful']);
+    } else {
+        return response()->json(['success' => false, 'message' => 'Invalid email or password'], 401);
+    }
 });

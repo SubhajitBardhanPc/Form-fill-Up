@@ -70,6 +70,40 @@
 
     <!-- External JavaScript -->
     <script src="{{ asset('js/login.js') }}"></script>
+    <script>
+        function toggleDrawer() {
+            const drawer = document.getElementById("sideDrawer");
+            drawer.classList.toggle("open");
+        }
+    
+        document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("loginForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            const response = await fetch("/login", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+                    "Accept": "application/json"
+                }
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert("Login successful! Redirecting to dashboard...");
+                window.location.href = "/dashboard"; // Redirect to dashboard
+            } else {
+                alert(result.message); // Show error message
+            }
+        });
+});
+
+    </script>
 
 </body>
+
 </html>
