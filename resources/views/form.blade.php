@@ -80,6 +80,7 @@
     <!-- External JavaScript -->
     <script src="{{ asset('js/slider.js') }}"></script>
     <script src="{{ asset('js/form-link.js') }}"></script>
+    <script src="{{ asset('js/login.js') }}"></script>
     <script>
         function toggleDrawer() {
             const drawer = document.getElementById("sideDrawer");

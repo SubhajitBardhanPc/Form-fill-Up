@@ -44,24 +44,19 @@
 </head>
 <body>
 
-    <div class="otp-container">
-        <h2>Login via Email & Password</h2>
-        <form id="otpForm">
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" name="phone" placeholder="Enter your phone number" required>
-            <label for="phone">Enter Password:</label>
-            <input type="text" id="phone" name="Password" placeholder="Enter your Password" required>
-
-            <button type="button" id="sendOtp">Send OTP</button>
-
-            <div id="otpInputSection" style="display: none;">
-                <label for="otp">OTP:</label>
-                <input type="text" id="otp" name="otp" placeholder="Enter OTP" required>
-
-                <button type="submit">Verify OTP</button>
-            </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+    
+            <button type="submit">Login</button>
         </form>
     </div>
+    
 
     <script src="{{ asset('js/Lscripts.js') }}"></script>
 
