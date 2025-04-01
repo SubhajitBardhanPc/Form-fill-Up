@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth; // ✅ Added for authentication
-
+use App\Http\Controllers\GATEFormController;
 // Route to display the form using the FormController
 Route::get('/', [FormController::class, 'showForm'])->name('form.show');
 
@@ -58,3 +58,4 @@ Route::post('/login', function (Request $request) {
         return response()->json(['success' => false, 'message' => 'Invalid email or password'], 401);
     }
 });
+Route::post('/save-form', [GATEFormController::class, 'store'])->name('save.form');

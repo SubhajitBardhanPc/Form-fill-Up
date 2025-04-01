@@ -39,17 +39,18 @@
     </header>
     <div class="form-container">
         <h1>GATE Examination Form</h1>
-        <form>
+        <form action="{{ route('save.form') }}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label for="fullname">Full Name:</label>
                 <input type="text" id="fullname" name="fullname" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="dob">Date of Birth:</label>
                 <input type="date" id="dob" name="dob" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="gender">Gender:</label>
                 <select id="gender" name="gender" required>
@@ -59,18 +60,18 @@
                     <option value="other">Other</option>
                 </select>
             </div>
-    
+
             <div class="form-group">
                 <label for="contact">Contact Number:</label>
                 <input type="tel" id="contact" name="contact" pattern="[0-9]{10}" maxlength="10" required>
                 <small style="color: #888;">Enter a 10-digit phone number</small>
             </div>
-    
+
             <div class="form-group">
                 <label for="email">Email Address:</label>
                 <input type="email" id="email" name="email" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="state">State:</label>
                 <select id="state" name="state" required>
@@ -113,28 +114,28 @@
                     <option value="PY">Puducherry</option>
                 </select>
             </div>
-    
+
             <div class="form-group">
                 <label for="pincode">PIN Code:</label>
                 <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" maxlength="6" required>
                 <small style="color: #888;">Enter a valid 6-digit PIN code</small>
             </div>
-    
+
             <div class="form-group">
                 <label for="degree">Degree:</label>
                 <input type="text" id="degree" name="degree" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="specialization">Specialization:</label>
                 <input type="text" id="specialization" name="specialization" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="university">University Name:</label>
                 <input type="text" id="university" name="university" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="yearofpassing">Year of Passing:</label>
                 <select id="yearofpassing" name="yearofpassing" required>
@@ -147,17 +148,17 @@
                     <option value="2020">2020</option>
                 </select>
             </div>
-    
+
             <div class="form-group">
                 <label for="papercode">GATE Paper Code:</label>
                 <input type="text" id="papercode" name="papercode" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="address">Residential Address:</label>
                 <input type="text" id="address" name="address" required>
             </div>
-    
+
             <div class="form-group">
                 <label for="examcenter">Preferred Exam Center:</label>
                 <select id="examcenter" name="examcenter" required>
@@ -171,23 +172,23 @@
                     <option value="pune">Pune</option>
                 </select>
             </div>
-    
+
             <div class="form-group-full">
                 <label for="photo">Upload Recent Photo:</label>
                 <input type="file" id="photo" name="photo" accept="image/*" required>
             </div>
-    
+
             <div class="form-group-full">
                 <label for="signature">Upload Signature:</label>
                 <input type="file" id="signature" name="signature" accept="image/*" required>
             </div>
-    
+
             <div class="form-group-full">
                 <label>
                     <input type="checkbox" name="agreement" required> I agree to the Terms & Conditions
                 </label>
             </div>
-    
+
             <div class="form-group-full">
                 <button type="submit">Submit</button>
             </div>
