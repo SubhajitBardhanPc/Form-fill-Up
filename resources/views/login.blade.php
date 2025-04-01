@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Page</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- External CSS files -->
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('css/slider.css') }}">
@@ -11,6 +13,8 @@
     <link rel="stylesheet" href="{{ asset('css/form-link.css') }}">
     <link rel="stylesheet" href="{{ asset('css/drawer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     <!-- Side Drawer -->
@@ -24,7 +28,7 @@
     <!-- Header Section -->
     <header class="header">
         <button class="menu-btn" onclick="toggleDrawer()">&#9776;</button>
-        <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="logo">
+        
         <nav class="nav-links">
             <a href="#">Home</a>
             <a href="#">About</a>
@@ -32,38 +36,22 @@
         </nav>
     </header>
 
-    <!-- Image Slider Section -->
-    <!-- Notice Board Section -->
-<section class="notice-board">
-    <h2>Notice Board</h2>
-    <ul id="notice-list">
-        <!-- Notices will be dynamically added here -->
-    </ul>
-    <a href="/notices" class="view-all">View All Notices</a>
-</section>
 
-<!-- External JavaScript -->
-<script src="{{ asset('js/notice-board.js') }}"></script>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
 
-    <!-- Notice Board Section -->
-    <section class="notice-board">
-        <h2>Notice Board</h2>
-        <ul>
-            <li>Notice 1: Important update about event A.</li>
-            <li>Notice 2: Reminder for the upcoming meeting.</li>
-            <li>Notice 3: Deadline for registration is approaching.</li>
-        </ul>
-    </section>
+            <button type="submit">Login</button>
+        </form>
 
-    <!-- Checkbox and Link to Form -->
-    <div class="form-link-section">
-        <label>
-            <input type="checkbox" id="enable-link"> Agree to Terms & Conditions
-        </label>
-        <a href="/form" class="form-link disabled" id="form-link" aria-disabled="true">Go to Form</a>
+        <p>Don't have an account? <a href="/register">Register here</a></p>
     </div>
-
+    
     <!-- Footer Section -->
     <footer class="footer">
         <div class="footer-content">
@@ -79,13 +67,43 @@
 
     <!-- External JavaScript -->
     <script src="{{ asset('js/slider.js') }}"></script>
-    <script src="{{ asset('js/form-link.js') }}"></script>
+
+    <!-- External JavaScript -->
     <script src="{{ asset('js/login.js') }}"></script>
     <script>
         function toggleDrawer() {
             const drawer = document.getElementById("sideDrawer");
             drawer.classList.toggle("open");
         }
+    
+        document.addEventListener("DOMContentLoaded", function () {
+        document.getElementById("loginForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+
+            const response = await fetch("/login", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+                    "Accept": "application/json"
+                }
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                alert("Login successful! Redirecting to dashboard...");
+                window.location.href = "/dashboard"; // Redirect to dashboard
+            } else {
+                alert(result.message); // Show error message
+            }
+        });
+});
+
     </script>
+
 </body>
+
 </html>
