@@ -40,5 +40,9 @@ class AuthController extends Controller
 
         return view('dashboard', compact('userData'));
     }
-    
+    public function admitPage()
+{
+    // Load the admit page view
+    return view('admit'); // Make sure 'admit.blade.php' exists in the views directory
+}
 }
