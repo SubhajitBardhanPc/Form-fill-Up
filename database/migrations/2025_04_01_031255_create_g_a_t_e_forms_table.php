@@ -14,7 +14,7 @@ class CreateGATEFormsTable extends Migration
             $table->date('dob');
             $table->string('gender');
             $table->string('contact', 10);
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('state');
             $table->string('pincode', 6);
             $table->string('degree');

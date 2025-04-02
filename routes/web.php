@@ -8,6 +8,10 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth; // ✅ Added for authentication
 use App\Http\Controllers\GATEFormController;
+use App\Http\Controllers\AuthController;
+
+
+
 // Route to display the form using the FormController
 Route::get('/', [FormController::class, 'showForm'])->name('form.show');
 
@@ -59,3 +63,4 @@ Route::post('/login', function (Request $request) {
     }
 });
 Route::post('/save-form', [GATEFormController::class, 'store'])->name('save.form');
+Route::get('/admit', [AuthController::class, 'admitPage'])->name('user.admit');

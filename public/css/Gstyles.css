@@ -15,6 +15,14 @@ body {
     flex-direction: column;
     min-height: 100vh; /* Full page height */
 }
+.error-message {
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
 
 /* Header Styling */
 .header {
