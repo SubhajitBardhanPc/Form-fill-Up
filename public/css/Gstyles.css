@@ -8,41 +8,132 @@
 /* Body Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #e3f2fd, #bbdefb); /* Subtle gradient for background */
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
     color: #333;
-    padding-top: 60px; /* Prevent overlap with fixed header */
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Full page height */
+    min-height: 100vh;
+    overflow-x: hidden;
 }
 
-
 /* Form Container */
-
+.form-container {
+    width: 100%; /* Full width */
+    max-width: 100%;
+    margin: auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    overflow-y: auto;
+}
 
 .form-container h1 {
     text-align: center;
     color: #333;
 }
 
-/* Form Group */
-.form-group,
-.form-group-full {
-    margin-bottom: 15px;
+/* Main Content Wrapper */
+.main-content {
+    flex-grow: 1;
+    overflow-y: auto;
+    width: 100%;
 }
 
+/* Footer Section */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+.footer a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+    }
+    h1 {
+        font-size: 28px;
+    }
+}
+/* Reset Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #e3f2fd, #bbdefb);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure full-page height */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Form Container */
+.form-container {
+    width: 100%; /* Full width */
+    max-width: 100vw; /* Ensure it covers the full viewport width */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enables vertical scrolling */
+    flex-grow: 1; /* Takes remaining space to push footer down */
+}
+
+/* Form Layout */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    overflow-y: auto;
+    max-height: 80vh; /* Ensures form is scrollable */
+}
+
+/* Form Groups */
+.form-group, .form-group-full {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 30%;
+}
+
+/* Full-width fields */
+.form-group-full {
+    width: 100%;
+}
+
+/* Labels */
 label {
     font-weight: bold;
-    display: block;
     margin-bottom: 5px;
 }
 
 /* Input Fields */
 input, select, textarea {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 16px;
 }
 
@@ -57,36 +148,14 @@ input:focus, select:focus, textarea:focus {
     outline: none;
 }
 
-/* File Upload */
-input[type="file"] {
-    border: none;
-    padding: 5px;
-}
-
-/* Error Messages */
-.error-message {
-    color: red;
-    font-size: 14px;
-    margin-top: 5px;
-    display: block;
-}
-
-/* Small text under input */
-small {
-    display: block;
-    color: #666;
-    font-size: 14px;
-    margin-top: 3px;
-}
-
 /* Submit Button */
 button {
     width: 100%;
     background-color: #007bff;
     color: white;
-    padding: 10px;
+    padding: 12px;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     font-size: 18px;
     cursor: pointer;
     transition: 0.3s ease;
@@ -96,263 +165,31 @@ button:hover {
     background-color: #0056b3;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .form-container {
-        padding: 15px;
-    }
+/* Error Messages */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-
-
-
-/* Header Styling */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%; /* Full width */
-    height: 60px; /* Fixed height */
-    background-color: #007bff; /* Blue header */
-    color: #fff;
-    position: fixed; /* Sticks at the top */
-    top: 0;
-    left: 0;
-    z-index: 1000; /* Keeps it above other elements */
-    padding: 0 20px; /* Space inside header */
-}
-
-.header .menu-btn {
-    font-size: 20px;
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-}
-
-.header .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    margin-left: 15px;
-    font-weight: bold;
-}
-
-/* Side Drawer Styling */
-.side-drawer {
-    position: fixed; /* Fixed positioning */
-    top: 0;
-    left: 0; /* Aligns to the left */
-    width: 250px; /* Drawer width */
-    height: 100%; /* Full height */
-    background-color: #1e88e5; /* Blue shade */
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
-    overflow-y: auto; /* Enables scroll if content exceeds height */
-    z-index: 999; /* Below header but above content */
-    transform: translateX(-100%); /* Hidden state */
-    transition: transform 0.3s ease-in-out; /* Smooth transition for opening */
-}
-
-.side-drawer.open {
-    transform: translateX(0); /* Visible state */
-}
-
-.side-drawer a {
-    display: block;
-    padding: 15px 20px;
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    border-bottom: 1px solid #ddd;
-}
-
-.side-drawer a:hover {
-    background-color: #1565c0; /* Highlight on hover */
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    color: #fff;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-/* Form Container */
-.form-container {
-    max-width: 70%; /* Width adjusts dynamically */
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    margin-bottom: 220px; /* Space at the bottom */
-}
-
-/* Heading Styling */
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 32px;
-    color: #333;
-}
-
-/* Form Layout */
-form {
-    display: flex;
-    flex-wrap: wrap; /* Allows fields to wrap on smaller screens */
-    justify-content: space-between;
-    gap: 20px; /* Space between fields */
-}
-
-/* Form Group */
-.form-group {
-    flex: 1; /* Equal width for fields */
-    display: flex;
-    flex-direction: column;
-    min-width: 30%;
-    margin-bottom: 20px; /* Space between fields */
-}
-
-.form-group-full {
-    width: 100%; /* Full-width fields */
-    margin-bottom: 20px;
-}
-/* Dropdown Styling */
-select {
-    appearance: none; /* Removes default dropdown styling */
-    -webkit-appearance: none; /* Removes default styling for Safari/Chrome */
-    -moz-appearance: none; /* Removes default styling for Firefox */
-    background-color: #ffffff; /* White background for dropdown */
-    border: 1px solid #ccc; /* Light border */
-    border-radius: 6px; /* Rounded corners */
-    padding: 10px; /* Padding for spacing */
-    font-size: 16px; /* Font size */
-    width: 100%; /* Full width */
-    box-sizing: border-box; /* Ensures proper width calculation */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: border-color 0.3s ease; /* Smooth transition effect */
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24"><path fill="gray" d="M7 10l5 5 5-5z"/></svg>'); /* Custom arrow icon */
-    background-repeat: no-repeat;
-    background-position: right 10px center; /* Places the arrow inside the dropdown */
-    background-size: 12px 12px; /* Adjust arrow size */
-}
-
-select:focus {
-    border-color: #4CAF50; /* Green border on focus */
-    outline: none; /* Removes outline */
-}
-
-select:hover {
-    border-color: #0056b3; /* Darker blue border on hover */
-}
-
-/* Placeholder Styling for First Option */
-select option[value=""][disabled] {
-    color: #aaa; /* Lighter gray for placeholder option */
-}
-
-/* Input, Select, and Textarea */
-input[type="text"],
-input[type="date"],
-input[type="tel"],
-input[type="email"],
-select,
-textarea,
-input[type="file"] {
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px; /* Rounded inputs */
-    width: 100%;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    border-color: #4CAF50; /* Green focus effect */
-    outline: none;
-}
-
-select {
-    appearance: none; /* Removes default styling */
-}
-
-/* Textarea */
-textarea {
-    resize: vertical; /* Allow vertical resizing */
-}
-
-.form-group-full button {
-    
-    background-color: #007bff; /* Primary Blue Color */
-    color: #fff; /* White Text */
-    padding: 12px 20px; /* Padding for better spacing */
-    border: none; /* Removes border */
-    border-radius: 6px; /* Rounded corners for a modern look */
-    font-size: 16px; /* Font size adjustment */
-    font-weight: bold; /* Bold text */
-    text-transform: uppercase; /* Convert button text to uppercase */
-    cursor: pointer; /* Pointer for clickability */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow for depth */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover and click effects */
-}
-
-.form-group-full button:hover {
-    background-color: #0056b3; /* Darker Blue on Hover */
-    transform: translateY(-2px); /* Slight lift effect */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-.form-group-full button:active {
-    background-color: #004080; /* Even darker Blue when clicked */
-    transform: translateY(0); /* Reset lift effect */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow on click */
-}
-
-
-/* Checkbox */
-input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-/* Label Styling */
-label {
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #333;
-}
-
-/* Footer Section */
+/* Footer */
 .footer {
     background-color: #333;
     color: white;
     padding: 20px;
     text-align: center;
-    margin-top: auto; /* Keeps footer at the bottom */
-}
-
-.footer a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
+    margin-top: auto; /* Pushes footer to the bottom */
+    width: 100%;
+    position: relative;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .form-group {
-        min-width: 100%; /* Full width for fields on smaller screens */
+        min-width: 100%;
     }
 
     .form-container {
-        padding: 20px; /* Reduce padding */
-    }
-
-    h1 {
-        font-size: 28px; /* Adjust font size */
+        padding: 20px;
     }
 }

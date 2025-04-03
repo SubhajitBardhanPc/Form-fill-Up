@@ -147,9 +147,22 @@
             <!-- Exam Center -->
             <div class="form-group">
                 <label for="examcenter">Exam Center:</label>
-                <input type="text" id="examcenter" name="examcenter" value="{{ old('examcenter') }}" required>
+                <select id="examcenter" name="examcenter" required>
+                    <option value="" disabled {{ old('examcenter') == null ? 'selected' : '' }}>Select Exam Center</option>
+                    <option value="Mumbai" {{ old('examcenter') == 'Mumbai' ? 'selected' : '' }}>Mumbai</option>
+                    <option value="Delhi" {{ old('examcenter') == 'Delhi' ? 'selected' : '' }}>Delhi</option>
+                    <option value="Kolkata" {{ old('examcenter') == 'Kolkata' ? 'selected' : '' }}>Kolkata</option>
+                    <option value="Chennai" {{ old('examcenter') == 'Chennai' ? 'selected' : '' }}>Chennai</option>
+                    <option value="Bangalore" {{ old('examcenter') == 'Bangalore' ? 'selected' : '' }}>Bangalore</option>
+                    <option value="Hyderabad" {{ old('examcenter') == 'Hyderabad' ? 'selected' : '' }}>Hyderabad</option>
+                    <option value="Pune" {{ old('examcenter') == 'Pune' ? 'selected' : '' }}>Pune</option>
+                    <option value="Ahmedabad" {{ old('examcenter') == 'Ahmedabad' ? 'selected' : '' }}>Ahmedabad</option>
+                    <option value="Lucknow" {{ old('examcenter') == 'Lucknow' ? 'selected' : '' }}>Lucknow</option>
+                    <option value="Jaipur" {{ old('examcenter') == 'Jaipur' ? 'selected' : '' }}>Jaipur</option>
+                </select>
                 @error('examcenter')<span class="error-message">{{ $message }}</span>@enderror
             </div>
+            
     
             <!-- Photo Upload -->
             <div class="form-group-full">
@@ -165,8 +178,15 @@
                 @error('signature')<span class="error-message">{{ $message }}</span>@enderror
             </div>
     
+            <div class="form-group-full">
+                <input type="checkbox" id="agree" name="agree" required>
+                <label for="agree">I confirm that the information provided is accurate and complete.</label>
+                @error('agree')<span class="error-message">{{ $message }}</span>@enderror
+            </div>
+            
             <!-- Submit Button -->
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit-btn" disabled>Submit</button>
+            
         </form>
     </div>
     
@@ -176,6 +196,9 @@
     </footer>
 
     <script>
+         document.getElementById('agree').addEventListener('change', function() {
+        document.getElementById('submit-btn').disabled = !this.checked;
+    });
         function toggleDrawer() {
             document.getElementById("sideDrawer").classList.toggle("open");
         }
