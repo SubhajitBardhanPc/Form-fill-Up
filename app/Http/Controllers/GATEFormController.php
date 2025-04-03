@@ -58,8 +58,36 @@ class GATEFormController extends Controller
 
     // Redirect to a thank-you page with a success message
     // return redirect()->route('form.success')->with('success', 'Form submitted successfully!');
+    return redirect()->route('verify.email', ['email' => $validatedData['email']]);
 }
 
-    
+public function verifyEmail($email)
+{
+    return view('verify_email', compact('email'));
+}
+
+public function validateOtp(Request $request)
+{
+    $request->validate([
+        'otp' => 'required|digits:6',
+        'email' => 'required|email'
+    ]);
+
+    // Assume OTP is correct (For actual implementation, send OTP via email)
+    $user = GATEForm::where('email', $request->email)->first();
+
+    if ($user) {
+        return redirect()->route('admit.card', ['email' => $request->email]);
+    } else {
+        return redirect()->back()->withErrors(['email' => 'Email not found!']);
+    }
+}
+
+public function showAdmitCard($email)
+{
+    $user = GATEForm::where('email', $email)->firstOrFail();
+    return view('admit_card', compact('user'));
+}
+
 
 }

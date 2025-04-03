@@ -64,3 +64,7 @@ Route::post('/login', function (Request $request) {
 });
 Route::post('/save-form', [GATEFormController::class, 'store'])->name('save.form');
 Route::get('/admit', [AuthController::class, 'admitPage'])->name('user.admit');
+Route::get('/verify-email/{email}', [GATEFormController::class, 'verifyEmail'])->name('verify.email');
+//
+Route::post('/validate-otp', [GATEFormController::class, 'validateOtp'])->name('validate.otp');
+Route::get('/admit-card/{email}', [GATEFormController::class, 'showAdmitCard'])->name('admit.card');
