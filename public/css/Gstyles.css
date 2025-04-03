@@ -1,102 +1,12 @@
-/* Reset Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body Styles */
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #e3f2fd, #bbdefb);
-    color: #333;
-    padding-top: 60px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
 /* Form Container */
 .form-container {
-    width: 100%; /* Full width */
-    max-width: 100%;
-    margin: auto;
+    max-width: 1100px;
+    margin: 30px auto;
     padding: 30px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    flex-grow: 1;
-    overflow-y: auto;
-}
-
-.form-container h1 {
-    text-align: center;
-    color: #333;
-}
-
-/* Main Content Wrapper */
-.main-content {
-    flex-grow: 1;
-    overflow-y: auto;
-    width: 100%;
-}
-
-/* Footer Section */
-.footer {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    margin-top: auto;
-    width: 100%;
-    position: relative;
-    bottom: 0;
-}
-
-.footer a {
-    color: #ffffff;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .form-container {
-        padding: 20px;
-    }
-    h1 {
-        font-size: 28px;
-    }
-}
-/* Reset Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #e3f2fd, #bbdefb);
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ensure full-page height */
-    overflow-x: hidden; /* Prevent horizontal scroll */
-}
-
-/* Form Container */
-.form-container {
-    width: 100%; /* Full width */
-    max-width: 100vw; /* Ensure it covers the full viewport width */
-    padding: 30px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    overflow-y: auto; /* Enables vertical scrolling */
-    flex-grow: 1; /* Takes remaining space to push footer down */
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
 }
 
 /* Form Layout */
@@ -105,64 +15,88 @@ form {
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
-    overflow-y: auto;
-    max-height: 80vh; /* Ensures form is scrollable */
+    max-height: 75vh; /* Keeps form within view */
+    overflow-y: auto; /* Scrollable form */
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #f1f1f1;
 }
 
-/* Form Groups */
-.form-group, .form-group-full {
+/* Custom Scrollbar */
+form::-webkit-scrollbar {
+    width: 8px;
+}
+
+form::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+}
+
+form::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Three Fields in a Row */
+.form-group {
     flex: 1;
+    min-width: calc(33.333% - 20px);
     display: flex;
     flex-direction: column;
-    min-width: 30%;
+    padding: 10px;
+    transition: all 0.3s ease;
 }
 
-/* Full-width fields */
+/* Full-width Inputs */
 .form-group-full {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
 /* Labels */
-label {
-    font-weight: bold;
-    margin-bottom: 5px;
+.form-group label, 
+.form-group-full label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    padding-left: 4px;
+    color: #333;
 }
 
 /* Input Fields */
-input, select, textarea {
+.form-group input, 
+.form-group select, 
+.form-group textarea, 
+.form-group-full input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 16px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
 }
 
-textarea {
-    resize: vertical;
-    height: 80px;
-}
-
-/* Input Focus */
-input:focus, select:focus, textarea:focus {
+/* Input Focus Effect */
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus, 
+.form-group-full input:focus {
     border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
     outline: none;
 }
 
-/* Submit Button */
-button {
-    width: 100%;
-    background-color: #007bff;
-    color: white;
-    padding: 12px;
+/* File Upload */
+.form-group-full input[type="file"] {
     border: none;
-    border-radius: 6px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.3s ease;
+    padding: 8px;
+    margin-top: 5px;
 }
 
-button:hover {
-    background-color: #0056b3;
+/* Checkbox */
+.form-group-full input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
 }
 
 /* Error Messages */
@@ -172,24 +106,39 @@ button:hover {
     margin-top: 5px;
 }
 
-/* Footer */
-.footer {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    margin-top: auto; /* Pushes footer to the bottom */
+/* Submit Button */
+#submit-btn {
     width: 100%;
-    position: relative;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .form-group {
-        min-width: 100%;
-    }
+#submit-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
 
-    .form-container {
-        padding: 20px;
+#submit-btn:hover:enabled {
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+    transform: scale(1.02);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .form-group {
+        min-width: calc(50% - 20px); /* Two fields per row */
+    }
+}
+
+@media (max-width: 600px) {
+    .form-group {
+        min-width: 100%; /* One field per row */
     }
 }

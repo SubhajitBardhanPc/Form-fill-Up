@@ -196,7 +196,36 @@
     </footer>
 
     <script>
-        
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            const submitBtn = document.getElementById("submit-btn");
+            const checkbox = document.getElementById("agree");
+
+            function validateForm() {
+                let allFilled = true;
+                const inputs = form.querySelectorAll("input[required], select[required], textarea[required]");
+                
+                inputs.forEach(input => {
+                    if (input.type === "file" && !input.files.length) {
+                        allFilled = false;
+                    } else if (input.type !== "file" && !input.value.trim()) {
+                        allFilled = false;
+                    }
+                });
+                
+                // Enable submit button if all fields are filled and checkbox is checked
+                submitBtn.disabled = !(allFilled && checkbox.checked);
+            }
+
+            // Attach event listeners to all required fields
+            form.querySelectorAll("input, select, textarea").forEach(element => {
+                element.addEventListener("input", validateForm);
+                element.addEventListener("change", validateForm);
+            });
+            
+            checkbox.addEventListener("change", validateForm);
+        });
+
         function toggleDrawer() {
             document.getElementById("sideDrawer").classList.toggle("open");
         }
