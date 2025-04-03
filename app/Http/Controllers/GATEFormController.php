@@ -57,7 +57,7 @@ class GATEFormController extends Controller
     ]);
 
     // Redirect to a thank-you page with a success message
-    return redirect()->route('form.success')->with('success', 'Form submitted successfully!');
+    // return redirect()->route('form.success')->with('success', 'Form submitted successfully!');
 }
 
     
