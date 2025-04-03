@@ -196,9 +196,7 @@
     </footer>
 
     <script>
-         document.getElementById('agree').addEventListener('change', function() {
-        document.getElementById('submit-btn').disabled = !this.checked;
-    });
+        
         function toggleDrawer() {
             document.getElementById("sideDrawer").classList.toggle("open");
         }
