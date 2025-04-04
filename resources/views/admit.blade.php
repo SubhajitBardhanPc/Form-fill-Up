@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admit Page</title>
     <style>
-        /* General body styling */
         body {
             font-family: 'Roboto', Arial, sans-serif;
             background-color: #e9ecef;
@@ -16,7 +15,6 @@
             align-items: center;
         }
 
-        /* Container for content */
         .container {
             width: 100%;
             max-width: 400px;
@@ -27,14 +25,12 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* Header styling */
         h1 {
             color: #343a40;
             text-align: center;
             margin-bottom: 20px;
         }
 
-        /* Paragraph styling */
         p {
             color: #6c757d;
             font-size: 16px;
@@ -42,7 +38,6 @@
             margin-bottom: 30px;
         }
 
-        /* Form styling */
         form {
             display: flex;
             flex-direction: column;
@@ -86,7 +81,6 @@
             background-color: #0056b3;
         }
 
-        /* Result section */
         #result {
             margin-top: 20px;
             padding: 10px;
@@ -95,7 +89,6 @@
             color: #343a40;
         }
 
-        /* Footer styling */
         footer {
             margin-top: 30px;
             font-size: 12px;
@@ -106,17 +99,21 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Admit Page</h1>
-        <p>Here you can manage your admit details with ease.</p>
+        <h1>Admit Card Validation</h1>
+        <p>Enter your registered email to check your admit details.</p>
 
-        <!-- Email Input Form -->
-        <form method="POST" action="validateEmail.php">
+        <form method="POST" action="{{ route('user.validateEmail') }}">
+            @csrf
             <label for="email">Enter your email:</label>
             <input type="email" id="email" name="email" required>
             <button type="submit">Validate</button>
         </form>
 
-        <div id="result"></div>
+        @if(session('error'))
+            <div id="result" style="color: red;">
+                {{ session('error') }}
+            </div>
+        @endif
     </div>
     <footer>&copy; 2025 Admit Page</footer>
 </body>

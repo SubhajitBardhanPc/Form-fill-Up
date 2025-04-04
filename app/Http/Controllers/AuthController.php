@@ -45,4 +45,23 @@ class AuthController extends Controller
     // Load the admit page view
     return view('admit'); // Make sure 'admit.blade.php' exists in the views directory
 }
+public function validateEmail(Request $request)
+    {
+        // Validate the email input
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        // Check if the email exists in the database
+        $user = GATEForm::where('email', $request->email)->first();
+
+        if ($user) {
+            // Redirect to the admit card page with user data
+            return view('admit_card', compact('user'));
+        } else {
+            // Return back with an error message
+            return redirect()->back()->with('error', 'Email not found! Please check your email.');
+        }
+    }
+
 }
