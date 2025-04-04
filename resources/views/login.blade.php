@@ -62,7 +62,7 @@
                 <a href="#">Contact</a> |
                 <a href="#">Privacy Policy</a>
             </nav>
-            <p>Email: contact@yourcompany.com | Phone: +123 456 7890</p>
+            <p>Email: subhajitbardhan1@gmail.com | Phone: +91 6289970438</p>
         </div>
     </footer>
 
