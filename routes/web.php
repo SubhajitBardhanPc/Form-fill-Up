@@ -73,3 +73,11 @@ Route::get('/admit-card/{email}', [GATEFormController::class, 'showAdmitCard'])-
 
 
 Route::post('/verify-otp', [AuthController::class, 'verifyOTP'])->name('verify.otp');
+
+
+Route::post('/logout', function (Request $request) {
+    Auth::logout();
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+    return redirect('/login'); // Redirect to login page after logout
+})->name('logout');

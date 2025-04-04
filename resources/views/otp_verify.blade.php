@@ -10,12 +10,39 @@
             font-family: 'Roboto', Arial, sans-serif;
             background-color: #f8f9fa;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
             margin: 0;
         }
 
+        /* Header Styles */
+        .header {
+            width: 100%;
+            background-color: #007bff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: flex-end;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logout-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: #c82333;
+        }
+
+        /* Container Styles */
         .container {
             width: 100%;
             max-width: 400px;
@@ -24,6 +51,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
+            margin-top: 50px;
         }
 
         h1 {
@@ -95,6 +123,15 @@
     </script>
 </head>
 <body>
+    <!-- Header with Logout Button -->
+    <div class="header">
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="logout-btn">Logout</button>
+        </form>
+    </div>
+
+    <!-- OTP Verification Container -->
     <div class="container">
         <h1>OTP Verification</h1>
         <p class="otp-info">Enter the OTP sent to your registered email.</p>
