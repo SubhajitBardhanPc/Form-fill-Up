@@ -16,23 +16,23 @@
 </head>
 <body>
     <!-- Side Drawer -->
-    <div class="side-drawer" id="sideDrawer">
-        <button class="close-btn" onclick="toggleDrawer()">&times;</button>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    </div>
+    <!-- Side Drawer -->
+<div class="side-drawer" id="sideDrawer">
+    <button class="close-btn" onclick="toggleDrawer()">&times;</button>
+    <a href="{{ route('form.show') }}">Home</a>
+    <a href="{{ route('form.welcome') }}">Resgister</a>
     
-    <!-- Header Section -->
-    <header class="header">
-        <button class="menu-btn" onclick="toggleDrawer()">&#9776;</button>
+</div>
+
+<!-- Header Section -->
+<header class="header">
+    <button class="menu-btn" onclick="toggleDrawer()">&#9776;</button>
+    <nav class="nav-links">
+        <a href="{{ route('form.show') }}">Home</a>
+        <a href="{{ route('form.welcome') }}">Resgister</a>
         
-        <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
+    </nav>
+</header>
 
     <!-- Registration Section -->
     <div class="login-container">
@@ -58,7 +58,7 @@
         <div class="footer-content">
             <p>&copy; 2025 Your Company. All rights reserved.</p>
             <nav class="footer-nav">
-                <a href="#">About</a> |
+                <a href="#">Resgister</a> |
                 <a href="#">Contact</a> |
                 <a href="#">Privacy Policy</a>
             </nav>
