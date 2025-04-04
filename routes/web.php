@@ -70,3 +70,6 @@ Route::post('/validate-email', [AuthController::class, 'validateEmail'])->name('
 
 Route::post('/validate-otp', [GATEFormController::class, 'validateOtp'])->name('validate.otp');
 Route::get('/admit-card/{email}', [GATEFormController::class, 'showAdmitCard'])->name('admit.card');
+
+
+Route::post('/verify-otp', [AuthController::class, 'verifyOTP'])->name('verify.otp');
