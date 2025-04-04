@@ -17,24 +17,22 @@
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 </head>
 <body>
-    <!-- Side Drawer -->
-    <div class="side-drawer" id="sideDrawer">
+    {{-- <div class="side-drawer" id="sideDrawer">
         <button class="close-btn" onclick="toggleDrawer()">&times;</button>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    </div>
-
+        <a href="{{ route('form.show') }}">Home</a>
+        <a href="{{ route('form.welcome') }}">Register</a>
+        
+    </div> --}}
+    
     <!-- Header Section -->
     <header class="header">
         <button class="menu-btn" onclick="toggleDrawer()">&#9776;</button>
         <nav class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Contact</a>
-            <a href="{{ route('user.admit') }}">Admit</a>
+            <a href="{{ route('form.show') }}">Home</a>
+            <a href="{{ route('user.admit') }}">Admit</a> 
         </nav>
     </header>
+    
 
     <div class="form-container">
         <h1>GATE Examination Form</h1>
