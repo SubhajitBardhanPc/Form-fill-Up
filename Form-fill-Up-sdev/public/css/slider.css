@@ -1,0 +1,10 @@
+.slider {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+}

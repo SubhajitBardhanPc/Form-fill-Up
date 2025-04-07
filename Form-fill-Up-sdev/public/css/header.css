@@ -1,0 +1,63 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Header Section */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw; /* Full viewport width */
+    height: 60px; /* Adjust height as needed */
+    background-color: #007bff;
+    color: #fff;
+    position: fixed; /* Sticks to the top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensures it stays above other elements */
+    padding: 0 20px; /* Keeps content aligned inside */
+}
+
+.header .menu-btn {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.header .logo {
+    height: 40px;
+}
+
+.header .nav-links {
+    display: flex;
+}
+
+.header .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+/* Ensure body content is not hidden behind the fixed header */
+body {
+    padding-top: 60px; /* Adjust based on header height */
+}
+
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Add transition for hover effect */
+}
+
+.menu-btn:hover {
+    transform: scale(1.1); /* Slight zoom effect for hover */
+}

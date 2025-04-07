@@ -1,0 +1,144 @@
+/* Form Container */
+.form-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+/* Form Layout */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    max-height: 75vh; /* Keeps form within view */
+    overflow-y: auto; /* Scrollable form */
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #007bff #f1f1f1;
+}
+
+/* Custom Scrollbar */
+form::-webkit-scrollbar {
+    width: 8px;
+}
+
+form::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+}
+
+form::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Three Fields in a Row */
+.form-group {
+    flex: 1;
+    min-width: calc(33.333% - 20px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Full-width Inputs */
+.form-group-full {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+/* Labels */
+.form-group label, 
+.form-group-full label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    padding-left: 4px;
+    color: #333;
+}
+
+/* Input Fields */
+.form-group input, 
+.form-group select, 
+.form-group textarea, 
+.form-group-full input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input Focus Effect */
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus, 
+.form-group-full input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+    outline: none;
+}
+
+/* File Upload */
+.form-group-full input[type="file"] {
+    border: none;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+/* Checkbox */
+.form-group-full input[type="checkbox"] {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+/* Error Messages */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Submit Button */
+#submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+#submit-btn:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+#submit-btn:hover:enabled {
+    background: linear-gradient(135deg, #0056b3, #003f7f);
+    transform: scale(1.02);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .form-group {
+        min-width: calc(50% - 20px); /* Two fields per row */
+    }
+}
+
+@media (max-width: 600px) {
+    .form-group {
+        min-width: 100%; /* One field per row */
+    }
+}
